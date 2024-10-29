@@ -5,11 +5,15 @@ import userRouter from './routes/userRoutes.js';
 import adminRouter from './routes/adminRoutes.js';
 import movieRouter from './routes/movieRoute.js';
 import bookingsRouter from './routes/bookingRoute.js';
+import cors from 'cors'
 
 dotenv.config();
 // server
 const app = express();
 app.listen(5000, () => console.log(`server started on PORT : ${5000}`));
+
+//cors
+app.use(cors());
 
 // middleware
 app.use(express.json());
