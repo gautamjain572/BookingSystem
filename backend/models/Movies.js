@@ -10,6 +10,7 @@ const movieSchema = new Schema({
         type: String,
         required: true,
     },
+    actors: [{type:String,required:true}],
     releaseDate:{
         type: String,
         required: true,
@@ -21,12 +22,12 @@ const movieSchema = new Schema({
     featured:{
         type: Boolean,
     },
-    bookings: [{ type:String }],
+    bookings: [{ type:mongoose.Types.ObjectId,ref:"Booking" }],
     admin:{
-        type: String,
+        type: mongoose.Types.ObjectId,
+        ref:"Admin",
         required: true,
     },
-
 })
 
 export default mongoose.model("Movie",movieSchema)

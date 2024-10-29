@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 import userRouter from './routes/userRoutes.js';
 import adminRouter from './routes/adminRoutes.js';
+import movieRouter from './routes/movieRoute.js';
+import bookingsRouter from './routes/bookingRoute.js';
 
 dotenv.config();
 // server
@@ -13,6 +15,8 @@ app.listen(5000, () => console.log(`server started on PORT : ${5000}`));
 app.use(express.json());
 app.use("/api",userRouter);
 app.use("/admin",adminRouter);
+app.use("/movie",movieRouter);
+app.use("/booking",bookingsRouter);
 
 // databse connect
 const connectDB = async () => {

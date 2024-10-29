@@ -53,3 +53,17 @@ export const adminLogin = async (req,res,next) => {
     });
     return res.status(200).json({ message:"Login Suceessfull" , token , id:existingAdmin._id});
 }
+
+export const getAdmins = async (req,res,next) => {
+    let admins;
+    try {
+        admins = await Admin.find()
+    } catch (error) {
+        console.log(error); 
+        return next(error);
+    }
+    if (!admins) {
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+    return res.status(200).json({ admins });
+}
