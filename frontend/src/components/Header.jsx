@@ -8,25 +8,19 @@ import TextField from '@mui/material/TextField';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { getAllMovies } from '../api/apiHelpers.js';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-  const [value,setValue] = useState(0);
-
-  const top100Films = [
-    { title: 'The Shawshank Redemption', year: 1994 },
-    { title: 'The Godfather', year: 1972 },
-    { title: 'The Godfather: Part II', year: 1974 },
-    { title: 'The Dark Knight', year: 2008 },
-    { title: '12 Angry Men', year: 1957 },
-  ]
+  const [value, setValue] = useState(0);
+  const [movies, setmovies] = useState([])
 
   useEffect(() => {
-    getAllMovies().then((data) => console.log(data)).catch((err) => console.log(err));
-  },[])
+    getAllMovies().then((data) => setmovies(data.movies)).catch((err) => console.log(err));
+  }, [])
 
   return (
-    <AppBar sx={{bgcolor:"#2b2d42"}}>
+    <AppBar position='stickey' sx={{ bgcolor: "#2b2d42" }}>
       <Toolbar>
 
         <Box width={'20%'}>
@@ -36,16 +30,17 @@ const Header = () => {
         <Box width={'30%'} margin={'auto'}>
           <Autocomplete
             freeSolo
-            options={top100Films.map((option) => option.title)}
-            renderInput={(params) => <TextField sx={{input:{color:"white"}}} {...params} placeholder="Search Movies" />}
+            options={movies && movies.map((option) => option.title)}
+            renderInput={(params) => <TextField sx={{ input: { color: "white" } }} {...params} placeholder="Search Movies" />}
           />
         </Box>
 
         <Box display={'flex'} >
-          <Tabs  textColor='white' indicatorColor='secondary' value={value} onChange={(e,val) => setValue(val)}>
-            <Tab label="Admin"/>
-            <Tab label="Auth"/>
-            <Tab label="All Movies"/>
+          <Tabs textColor='white' indicatorColor='secondary' value={value} onChange={(e, val) => setValue(val)}>
+            <Tab LinkComponent={Link} to="/" label="Home" />
+            <Tab LinkComponent={Link} to="/movies" label="Movie" />
+            <Tab LinkComponent={Link} to="/admin" label="Admin" />
+            <Tab LinkComponent={Link} to="/auth" label="Auth" />
           </Tabs>
         </Box>
 
