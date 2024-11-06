@@ -13,7 +13,7 @@ function App() {
     <>
     <TopHeader/>
     <Header />
-    <section>
+    <section className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/movies" element={<Movies />} />

@@ -32,7 +32,7 @@ export const addUser = async (req,res,next) => {
     if (!user) {
         return res.status(500).json({message:"Unexpected Error Occured"})
     }
-    return res.status(201).json({ user })
+    return res.status(201).json({ id :user._id })
 }
 
 export const updateUser = async (req,res,next) => {
@@ -89,7 +89,7 @@ export const userLogin = async (req,res,next) => {
     if (!isPasswordCorrect) {
         return res.status(400).json({message: "Incorrect Password"});
     }
-    return res.status(200).json({ message:"Login Suceessfull" });
+    return res.status(200).json({ message:"Login Suceessfull",id :existingUser._id });
 }
 
 export const getBookingUser = async (req,res,next) => {
