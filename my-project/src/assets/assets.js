@@ -9,10 +9,12 @@ import pi5 from './605.avif'
 import pi6 from './606.avif'
 import pi7 from './607.avif'
 import pi8 from './608.avif'
+import profile from './profile.svg'
+import bin from './bin_icon.png'
 
 export const assets = {
     logo,
     serach,
     poster,
-    pi1,pi2,pi3,pi4,pi5,pi6,pi7,pi8,
+    pi1,pi2,pi3,pi4,pi5,pi6,pi7,pi8,profile,bin
 }

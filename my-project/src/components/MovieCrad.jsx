@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MovieCrad = ({ title, releaseDate, posterUrl, id , description }) => {
     return (
@@ -14,7 +15,7 @@ const MovieCrad = ({ title, releaseDate, posterUrl, id , description }) => {
                         <p className='text-sm'>{description}</p>
                     </div>
                     <div className='mt-3'>
-                        <button className='border rounded-md border-black px-2 py-1 text-sm hover:bg-[#f84464] hover:text-white transition-all duration-500'>Book Ticket</button>
+                       <Link to={`/booking/${id}`}><button className='border rounded-md border-black px-2 py-1 text-sm hover:bg-[#f84464] hover:text-white transition-all duration-500'>Book Ticket</button></Link> 
                     </div>
                 </div>
             </div>

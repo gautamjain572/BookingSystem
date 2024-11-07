@@ -16,7 +16,7 @@ export const newBooking = async (req, res, next) => {
     if (!existingMovie) {
         return res.status(404).json({ message:"Movie not found" })
     }
-    if (!user) {
+    if (!existingUser) {
         return res.status(404).json({ message:"User not found" })
     }
     let booking;

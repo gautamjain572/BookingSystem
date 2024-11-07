@@ -106,3 +106,17 @@ export const getBookingUser = async (req,res,next) => {
     }
     return res.status(200).json({ booking });
 }
+
+export const getOneUser = async (req,res,next) => {
+    const id = req.params.id;
+    let user;
+    try {
+        user = await User.findById(id);
+    } catch (error) {
+        return next(error);
+    }
+    if (!user) {
+        return res.status(500).json({message:"Unexpected Error Occured"})
+    }
+    return res.status(200).json({ user })
+}

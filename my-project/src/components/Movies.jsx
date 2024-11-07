@@ -28,7 +28,7 @@ const Movies = () => {
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-6'>
         {
           movies?.map((item,index) => (
-            <MovieCrad key={index} id={item.id} posterUrl={item.posterUrl} title={item.title} description={item.description} />
+            <MovieCrad key={index} id={item._id} posterUrl={item.posterUrl} title={item.title} description={item.description} />
           ))
         }
         </div>
