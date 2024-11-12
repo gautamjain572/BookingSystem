@@ -4,6 +4,7 @@ import Title from './Title'
 import MovieCrad from './MovieCrad'
 import { Link } from 'react-router-dom'
 import { getAllMovies } from '../api/apiHelpers'
+import Swiperjs from './Swiperjs'
 
 const Homepage = () => {
 
@@ -16,7 +17,9 @@ const Homepage = () => {
   return (
     <div className='mt-6'>
       <div className='flex justify-center'>
-        <img src={assets.poster} alt="" />
+        {/* <img src={assets.poster} alt="" /> */}
+        {/* <Carousel /> */}
+        <Swiperjs />
       </div>
 
       <div className='text-center py-8 text-3xl'>
