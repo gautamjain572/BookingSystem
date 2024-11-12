@@ -10,7 +10,7 @@ import cors from 'cors'
 dotenv.config();
 // server
 const app = express();
-app.listen(5000, () => console.log(`server started on PORT : ${5000}`));
+
 
 //cors
 app.use(cors());
@@ -30,6 +30,12 @@ const connectDB = async () => {
     await mongoose.connect(`${process.env.MONGODB_URI}`)
 }
 connectDB();
+
+app.get('/', (req, res) => {
+    res.send('API Working')
+ })
+
+app.listen(5000, () => console.log(`server started on PORT : ${5000}`));
 
 
 

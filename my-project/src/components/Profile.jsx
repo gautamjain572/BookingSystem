@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getMovieDetails, getUserBooking, getUserDetails } from '../api/apiHelpers'
+import { deleteBooking, getMovieDetails, getUserBooking, getUserDetails } from '../api/apiHelpers'
 import { assets } from '../assets/assets'
 import Title from './Title'
 
@@ -16,8 +16,12 @@ const Profile = () => {
             .catch((err) => console.log(err))
     }, [])
 
+    const handleDelete = (id) => {
+        deleteBooking(id)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+    }
     
-
     return (
         <div className='w-full flex'>
             {
@@ -38,14 +42,14 @@ const Profile = () => {
                                             <div className='flex items-start gap-6'>
                                                 <img className='w-16 sm:w-20' src={assets.pi1} alt="" />
                                                 <div>
-                                                    <p className='text-xs sm:text-lg font-medium'>Movie: {item.movie}</p>
+                                                    <p className='text-xs sm:text-lg font-medium'>Movie:{item.movie.title}</p>
                                                     <div className='flex items-center gap-5 mt-2'>
-                                                        <p></p>
-                                                        <p className='px-2 sm:px-3 sm:py-1 border bg-slate-50'></p>
+                                                        <p>Date: {new Date(item.date).toDateString()}</p>
+                                                        <p className='px-2 sm:px-3 sm:py-1 border bg-slate-50'>{item.seatNumber}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <img src={assets.bin} className='w-4 mr-4 sm:w-5 cursor-pointer' alt="" />
+                                            <img onClick={() => handleDelete(item._id)} src={assets.bin} className='w-4 mr-4 sm:w-5 cursor-pointer' alt="" />
                                         </div>
                                     )
                                 })

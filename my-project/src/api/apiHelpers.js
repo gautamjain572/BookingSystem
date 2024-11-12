@@ -84,3 +84,13 @@ export const getUserDetails = async () => {
     const resData = await res.data;
     return resData;
 }
+
+export const deleteBooking = async (id) => {
+    const res = await axios.delete(`/booking/${id}`)
+    .catch((err) => console.log(err))
+    if (res.status !== 200) {
+        return console.log("error");
+    }
+    const resData = await res.data;
+    return resData;
+}

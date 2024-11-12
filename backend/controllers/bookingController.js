@@ -47,7 +47,7 @@ export const newBooking = async (req, res, next) => {
 export const getAllBooking = async (req,res,next) => {
     let booking;
     try {
-        booking = await Bookings.find()
+        booking = await Bookings.find().populate("user movie");
     } catch (error) {
         console.log(error); 
         return next(error);
@@ -62,7 +62,7 @@ export const getBookingById = async (req, res, next) => {
     const id = req.params.id;
     let booking;
     try {
-        booking = await Bookings.findById(id);
+        booking = await Bookings.findById(id).populate("user movie");
     } catch (error) {
         return console.log(error);
     }
